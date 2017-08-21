@@ -8,7 +8,7 @@ curl "https://api.dc01.gamelockerapp.com/shards/na/link/{id}" \
   -H "Accept: application/vnd.api+json"
 ```
 
-此接口检查link对象是否存在于指定代码中。
+此接口检查指定的link对象是否存在。
 
 ### HTTP 请求
 
@@ -23,7 +23,7 @@ Parameter | Default | Description
 --- | ---- | ----
 
 
-## 发布 a Link
+## POST请求一个Link
 
 ```shell
 curl -XPOST "https://api.dc01.gamelockerapp.com/shards/na/link/{player_id}" \
@@ -31,7 +31,7 @@ curl -XPOST "https://api.dc01.gamelockerapp.com/shards/na/link/{player_id}" \
   -H "Accept: application/vnd.api+json"
 ```
 
-如果验证代码与游戏提供的代码相匹配，则此接口将创建一个PlayerLink对象。
+如果验证码与游戏中对应资源相匹配，则此接口将创建一个PlayerLink对象。
 
 
 ### HTTP Request
