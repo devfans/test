@@ -176,7 +176,7 @@ Resource linkage **MUST** be represented as one of the following:
 // ...
 ```
 
-服务器在收到获取指定URL的 `GET` 请求时 **一定** 会响应并返回所请求的资源。
+服务器在收到获取指定URL的 `GET` 请求时 **一定** 会响应并返回所请求的资源作为主要数据。
 
 ### <a href="#document-resource-identifier-objects" id="document-resource-identifier-objects" class="headerlink"></a> 资源标识符对象
 
