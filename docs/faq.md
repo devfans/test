@@ -61,8 +61,8 @@ A: 2017 API 挑战赛报名至3月26日截止。详情请参考[list of submissi
 ######Q: API挑战赛的奖金如何进行团队内分配？   
 A: 您可以参加API挑战赛，团队成员最多可达四人。总奖金将会根据团队成员的多少进行平均分配。（至多4人）
 
-######Q: What features will be available for the API Challenge?  
-A: Some features available include Telemetry, Bulk Sample Data,
+######Q: 在API竞赛时，哪些功能已经可以使用?  
+A: 一些功能已经可以使用，包含遥测（Telemetry），批量样本数据。
 
 ######Q:  我要去哪里注册团队，或是告知我所属的团队？
 A: 就API Challenge而言，您无需特意告知我们您的所属团队。当您在提交报名参加挑战的时候，我们自会询问您的团队组成！
