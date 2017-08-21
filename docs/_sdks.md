@@ -1,6 +1,6 @@
 # Community SDK's
 
-我们欢迎社区贡献，并会奖励好的业力（其他人也会很崇拜你哦！）如果你目前正在进行API方面的工作，在Discord服务器上告诉我们，我们会为你增加链接的！
+我们欢迎社区贡献，并会奖励好的业力（其他人也会很崇拜你哦！）如果你目前正在进行API方面的工作，在Discord上告诉我们，我们会为你增加链接的！
 
 ##Java
 
@@ -22,6 +22,7 @@ JavaScript API 客户端 - [seripap/vainglory](https://github.com/seripap/vaingl
 
 用于访问API的R6类工程 (R语言) - [nathancarter/rvgapi]
 (https://github.com/nathancarter/rvgapi)
+
 ##Go
 
 为Vainglory开发者API提供的go语言可行性验证用客户端 - [madglory/vainglory-go-client](https://github.com/madglory/vainglory-go-client)
