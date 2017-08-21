@@ -60,7 +60,7 @@ Vainglory游戏数据服务器目前支持下列地区
 
 * **公测（即将到来）：pbe
 
-**Choosing a specific region is currently required**
+**当前需要选择一个具体区域**
 ## GZIP
 
 > 要为头部指定可接受的编码
