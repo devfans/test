@@ -135,7 +135,7 @@ res, _ := client.Do(req)
 }
 ```
 
-此接口从比赛中检索数据。禁止获取所有的比赛数据。
+此接口从比赛中检索数据。禁止使用此接口大量获取比赛数据。
 ### HTTP Request
 
 `GET https://api.dc01.gamelockerapp.com/shards/na/matches`
