@@ -539,7 +539,7 @@ Content-Type: application/vnd.api+json
 `null` 仅当在请求的URL是一个疑似单个资源但目前并不存在时被返回。
 
 > 提示：考虑如下情况，例如考虑仅获取一个单一相关资源链接的请求。当relationship为空时（即该链接没有指定到任何资源上）
-，该请求的相应可能为 `null`，当且仅当资源的[resource object][resource objects]为单个时。
+，则响应为 `null`，否则，应为单一相关资源的[resource object][resource objects]。
 
 例如，请求单个article的 `GET` 请求可能如下：
 
