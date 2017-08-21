@@ -5,7 +5,7 @@
 使用API的客户端应指定其可接受的响应类型，格式为`application/vnd.api+json`，为方便起见
 `application/json`也是可以的，因为后者在很多常见客户端类库中是默认支持的。
 
-服务器在响应时会附带`Content-Type`头部，具体指出客户端请求的数据类型。
+服务器在响应时会附带相同`Content-Type`头部。
 
 ## 地区
 
@@ -32,12 +32,12 @@
 
 Vainglory游戏数据服务器目前支持下列地区
 
-***General Region Shards***
 
 ***General Region Shards***
 
 要在具体指定的公开服务器上查找数据，请使用以下分片。
 
+* **China:** ```cn```
 * **North America:** ```na```
 * **Europe:** ```eu```
 * **South America:** ```sa```
@@ -46,7 +46,7 @@ Vainglory游戏数据服务器目前支持下列地区
 
 ***Tournament Region Shards***
 
-要寻找专业电子竞技的数据（仅在私人设备中产生），请使用以下分片。
+要寻找专业电子竞技的数据（仅在特殊设备中产生），请使用以下分片。
 
 * **North America Tournaments:** ```tournament-na```
 * **Europe Tournaments:** ```tournament-eu```
@@ -54,8 +54,13 @@ Vainglory游戏数据服务器目前支持下列地区
 * **East Asia Tournaments:** ```tournament-ea```
 * **Southeast Asia Tournaments:** ```tournament-sg```
 
-**Choosing a specific region is currently required**
+***公测环境***
 
+针对于与SEMC签订合同以获取公测环境（PBE）权限的开发者，其密钥有以下额外的数据访问。
+
+* **公测（即将到来）：pbe
+
+**Choosing a specific region is currently required**
 ## GZIP
 
 > 要为头部指定可接受的编码
@@ -186,6 +191,6 @@ curl -i https://api.dc01.gamelockerapp.com/status -H "Origin: http://example.com
   Access-Control-Max-Age: 86400
 ```
 
-API支持任意源的CORS的AJAX请求。您可以残月CROS W3C建议，或HTML 5 安全指引中的教程。
+API支持任意源的CORS的AJAX请求。您可以参阅CROS W3C建议，或HTML 5 安全指引中的教程。
 
 下面是当浏览器访问 http://example.com 时的请求样例：
