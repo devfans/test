@@ -10,7 +10,7 @@ curl "https://api.dc01.gamelockerapp.com/shards/na/teams?filter[teamNames]=team1
   -H "Accept: application/vnd.api+json"
 ```
 
-该端点可以获取最多6个队伍的信息。
+该接口可以获取最多6个队伍的信息。
 
 <aside class="warning">
 重要 - 队伍信息目前还无法使用API获得。
