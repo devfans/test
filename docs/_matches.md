@@ -235,7 +235,7 @@ ID | The ID of the match to retrieve
 
   1.  游戏模式必须为一下一种:
     * 排位赛
-    * 匹配赛
+    * 匹配赛
     * 好友对战
     * private_party_draft_match
     * private_party_aral_match
