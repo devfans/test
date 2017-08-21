@@ -438,7 +438,7 @@ The following "globally allowed characters" **MAY** be used anywhere in a member
 成员名也 **可以** 以@符号起始(U+0040 COMMERCIAL AT, "@")。使用这种方式命名的成员被称为
 "@-Members"。 @-Members **可以** 出现在 JSON API 文档的任意位置。
 
-然而 JSON API 处理程序 **必须** 完全忽略s@-Members（也就是说不把它们当作JSON API数据）
+然而 JSON API 处理程序 **必须** 完全忽略@-Members（也就是说不把它们当作JSON API数据）
 
 此外，在解析本章节之外的所有JSON API定义以及处理过程中 **必须** 忽略掉 @-Members。
 例如在所有attribute对象之上定义的[attribute][attributes]。然而因为在解析定义时
