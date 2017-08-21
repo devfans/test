@@ -282,7 +282,7 @@ Resource linkage **MUST** be represented as one of the following:
 
 > 提示：在文档中，您可以将 `type` 和 `id` 数据对看作整个文档中独一的 [resource objects]引用。
 
-> 提示：该实现可以保证所请求的 [resource object][resource objects] 是符合要求与规定的，
+> 提示：该方法确保每个响应中唯一正确的 [resource object][resource objects]被返回，
 即便是相同的资源被多次引用。
 
 ### <a href="#document-meta" id="document-meta" class="headerlink"></a> 元数据
