@@ -44,8 +44,11 @@ curl "https://api.dc01.gamelockerapp.com/shards/na/players/<ID>" \
 }
 }
 ```
-此接口检索一个具体的player
-This endpoint retrieves a specific player.
+此接口检索一个具体的player.
+
+* 如果玩家改过名字，则有可能一个玩家名字对应多个ID.
+
+* 玩家改名并不对对此接口产生影响。玩家改名后，需要至少1场比赛的累积才能看到名字的改变
 
 <aside class="notice">
 变化来了! - 目前，Player资源并没有完全被定义，但还是被包含了，用户可以获得一些基础信息（名字，等。）在接下来的几个月，将会有更多的数据被加入到这个对象里，同时也可能会有一些小变动，比如数据从`attributes.stats`对象移到`attributes`对象。
