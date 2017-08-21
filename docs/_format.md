@@ -1,13 +1,10 @@
-attribute 属性
-field 字段
-relationship 关联
 
 
 # <a href="#document-resource-objects" id="document-resource-objects" class="headerlink"></a> 资源对象
 
-"资源对象" 出现在JSON API文档内，表示资源。 
+"资源对象" 出现在JSON API文档内，表示对应资源。 
 
-资源对象**必须**至少包含以下的首层成员： 
+资源对象**必须**至少包含以下的顶级成员： 
 
 * `id`
 * `type`
@@ -53,7 +50,7 @@ relationship 关联
 
 `type` 成员用于描述使用了相同属性（attribute）和关系（relationship）的[resource objects]。
 
-`type` 成员的值 **必须** 与 [member names] 的常量相同。
+`type` 成员的值 **必须** 满足与 [member names] 类似的限制。
 
 > 提示：本说明文档中不会考虑词形变化，因此 `type` 值可能是单数也可能是复数。但不管怎么样，在功能实现过程中应始终使用相同的值。
 
@@ -82,8 +79,8 @@ relationship 关联
 
 #### <a href="#document-resource-object-relationships" id="document-resource-object-relationships" class="headerlink"></a> Relationships
 
-`relations` 的值 **必须** 为一个对象（一个 "relationships"对象）。该对象的成员表示
-到 [resource object][resource objects] 对象的引用，用来将其定义其他资源对象上。
+`relationships` 的值 **必须** 为一个对象（一个 "relationships"对象）。该对象的成员表示
+该 [resource object][resource objects] 对其他资源对象的引用关系。
 
 这个关系可以是一对一也可以是一对多的。
 
@@ -98,7 +95,7 @@ relationship 关联
 * `data`: [resource linkage]
 * `meta`: 一个 [meta object][meta]对象，包含了有关关联的非标准元数据信息。
 
-一个代表一对多（to-many）关系的关联（relationship）对象 **可能** 在`links`成员也包含了 [pagination] 连接，正如下方所描述的一样。
+一个代表一对多（to-many）关系的关联（relationship）对象 **可能** 在`links`成员中也包含了 [pagination] 连接，正如下方所描述的一样。
 
 > 提示：参考 [fields] 和 [member names] 获取该容器的更多限制信息。
 
@@ -713,28 +710,27 @@ Content-Type: application/vnd.api+json
 服务器 **应当** 为请求返回响应，而客户端 **应当** 按照[`HTTP semantics`](http://tools.ietf.org/html/rfc7231)
 来解读响应的意义。
 
-### <a href="#fetching-includes" id="fetching-includes" class="headerlink"></a> 相关资源中的内容
+### <a href="#fetching-includes" id="fetching-includes" class="headerlink"></a> 包含相关资源
 
-端点（endpoint）默认情况下 **可能** 会返回与主要数据相关的资源。
+一个接口默认情况下 **可能** 会返回与主要数据相关的资源。
 
-端点 **也可以** 支持 `include` 请求参数，允许客户端定制相关资源中应返回的内容。
+接口 **也可以** 支持 `include` 请求参数，允许客户端指定应返回的相关资源。
 
-如果端点不支持 `include` 参数，则其 **必须** 向含有该参数的请求返回 `400 Bad Request`。
+如果接口不支持 `include` 参数，则其 **必须** 向含有该参数的请求返回 `400 Bad Request`。
 
-如果端点支持同时客户端的请求中也提供了 `include` 参数，则服务器 **不应** 返回
-`included` 章节中[compund document] 未被请求的其他[resource objects]。
+如果端点支持同时客户端的请求中也提供了 `include` 参数，则服务器返回的[compund document] 中
+`included`字段 **不应** 包含未被请求的其他[resource objects]。
 
-`include` 参数中的值，即relationship路径列表 **不应** 使用逗号分隔(U+002C
-COMMA, ",")。relationship 路径应使用句点符号(U+002E FULL-STOP, ".")分隔，
-即[relationship][relationships]名称列表。
+`include` 参数中的值，即relationship路径列表 **应该** 使用逗号分隔(U+002C
+COMMA, ",")。relationship 路径应是使用句点符号(U+002E FULL-STOP, ".")分隔的[relationship][relationships]名称列表。
 
-如果服务器无法定位relationship路径，或是无法将某个资源从某个路径中提取出来，则服务器 **必须** 返回 400 Bad Request。
+如果服务器无法定位relationship路径，或不支持路径中包含资源信息，则服务器 **必须** 返回 400 Bad Request。
 
 > 提示：例如，relationship路径看起来可能是这样的 `comments.author`，即 `comments` 属于某个
 `articles` [resource object][resource objects] 的relationship，而 `author` 属于
 `comments` [resource object][resource objects] 的relationship。
 
-举个例子，在请求文章的同时顺带捎上评论：
+举个例子，在请求文章的同时携带评论：
 
 ```http
 GET /articles/1?include=comments HTTP/1.1
@@ -749,24 +745,24 @@ Accept: application/vnd.api+json
 ```
 
 > 提示：因为 [compound documents][compound document] 要求获取完整的链接内容
-（除非relationship链接内容被sparse fieldset排除在外），路径不同部分的中间资源（intermediate resources）一定会与同
+（除非relationship链接内容被sparse fieldset排除在外），路径不同部分的中间资源（intermediate resources）一定会与
 子节点一同被返回。例如，对于获取 `comments.author` 的请求，其响应值应囊括 `comments`，
 以及这些　`comments` 中的 `author`。
 
-> 提示：服务器可能会提供深层嵌套的relationship，例如 `comments.author`，这时候就可以利用
-别名，将对资源的访问简化为 `comment-auhtors`。这样一来就使得 `/articles/1?include=comment-authors`
+> 提示：服务器可能会利用
+别名提供深层嵌套的relationship，例如 `comments.author`，这时候就可以，将对资源的访问简化为 `comment-auhtors`。这样一来就使得 `/articles/1?include=comment-authors`
 这样的请求成为了可能，从而替代 `/articles/1?include=comments.author`这样的请求。
 通过利用别名来抽象嵌套relationship，服务器仍然可以在复合文档中提供完全的链接内容访问，
 同时无需加入不需要的中间资源。
 
-可以在逗号分隔列表中同时请求多个相关资源：
+请求中可以使用逗号分隔多个相关资源：
 
 ```http
 GET /articles/1?include=author,comments.author HTTP/1.1
 Accept: application/vnd.api+json
 ```
 
-不仅如此，还可以从relationship端点中获取到相关的资源
+不仅如此，还可以从relationship接口中获取到相关的资源
 
 ```http
 GET /articles/1/relationships/comments?include=comments.author HTTP/1.1
@@ -774,14 +770,14 @@ Accept: application/vnd.api+json
 ```
 
 这样一来，响应的主要数据即为[resource identifier objects][resource identifier object]集合
-，即用于获取某篇文章所有评论的链接，同时所有评论以及评论作者数据都会作为被包含数据从服务器返回。
+，即用于获取某篇文章所有评论的链接，同时所有评论以及评论作者数据都会在服务器返回被包含。
 
-> 提示：本章节的内容适用于任何以主要数据（primary data）响应的端点，与请求的类型无关。
-例如，服务器会为 `POST` 请求创建资源或relationship并提供相关资源的打包支持。
+> 提示：本章节的内容适用于任何响应主要数据（primary data）的接口，与请求的类型无关。
+例如，服务器会为 `POST` 请求创建资源或relationship时，支持请求中包含相关资源的信息。
 
 ### <a href="#fetching-filtering" id="fetching-filtering" class="headerlink"></a> 过滤
 
-`filter` 查询参数属于保留参数，用于过滤数据。过滤器是集合（collection）的视图（view），服务器与客户端
+`filter` 查询参数属于保留参数，用于过滤数据。Filters(过滤器)是集合（collection）的视图（view），服务器与客户端
 **应当** 可以利用该键值进行过滤操作。
 
 > 提示：服务器具体支持什么策略对于JSON API来说是无关紧要的。 `filter` 查询参数可以作为其他任意过滤策略的基础。
