@@ -349,7 +349,7 @@ The following `self` link is simply a URL:
 
 ### <a href="#document-jsonapi-object" id="document-jsonapi-object" class="headerlink"></a> JSON API 对象
 
-在 `jsonapi` 顶级成员下 **可能** 包含有JSON API文档，其中描述了其具体的实现方法。
+JSON API文档在 `jsonapi` 顶级成员下 **可能** 包含其具体的实现方法。
 如果该成员存在，则 `jsonapi` 的值 **必须** 是一个对象（一个"jsonapi object"）。
 jsonapi对象 **可能** 会有一个 `version` 成员，其值指定了支持的最高JSON API版本；
 此外，该对象 **可能** 还有另一个 `meta` 成员，该成员的值是一个 [meta] 对象，
