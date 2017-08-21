@@ -51,12 +51,12 @@ req.Header.Set("Accept", "application/vnd.api+json")
 res, _ := client.Do(req)
 ```
 
-我们需要您将您的JSON Web Token ([JWT](https://jwt.io/))与同 `Authorization` 一起发送。
-JWTs会在授权（Authorization）头部中作为持有的token，外观如下：
+我们需要您将您的JSON Web Token ([JWT](https://jwt.io/)) 通过 `Authorization` 一起发送。
+JWTs将以bearer token的形式放在Authorization头部中，格式如下：
 
 `Authorization: <输入你的API key>`
 
 您无需手动创建JWT，当您注册API时它会自动被创建。- [在这里注册！](https://developer.vainglorygame.com/users/sign_in)
 
 
-有的时候 `X-API-KEY` 可以给你更多获取相关信息的权限，就一切情况而论，您是受token限制率规定限制的。
+有的时候 `X-API-KEY` 可以给你更多获取相关信息的权限，但是所有情况下，每个token的访问频率是有一定限制的。
