@@ -1,6 +1,6 @@
 # Players
 
-Player objects contain aggregated lifetime information about each Player.  At this time Players are fairly sparse, but there are plans to add much richer data as it becomes available.
+Player对象包含每个玩家的累计信息。 当前Players相对数据稀少，但已计划可用时会添加更加丰富的数据。
 
 ## 获取一个Player
 
