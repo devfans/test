@@ -150,6 +150,141 @@ curl "https://gl-prod-us-east-1.s3.amazonaws.com/assets/semc-vainglory/na/2017/0
 
 遥测数据根据需求的不同分为以下几种类型。下面列出了所有事件类型同时附带了一个示例。
 
+
+### 一般事件信息:
+
+#### 团队（Team）
+在比赛准备阶段时间中团队将以 ```1``` 或 ```2```的形式出现，在比赛进行时的事件中，团队的形式将变为 ```Left``` 或 ```Right```。其中```1``` 指 ```Left```边，```2``` 指 ```Right```边。
+
+#### 位置 & 目标位置
+事件中的位置以矢量的形式展现，例如：
+
+	[-17.51, 0.01, 41.63]
+
+其中第一个值表示x坐标，第二个值为z坐标，第三个值为y坐标，换句话说，“长，宽， 高”。
+
+以下列出一些重要的地图位置：
+
+MAP LANDMARK COORDINATES
+
+==LEFT SIDE 左边==
+
+Base Shop (-88.50, 0.89, 2.00)
+
+Crystal (-76.12, 0.00, 19.90)
+
+Turret 5 (-75.48, 0.00, 11.96)
+Turret 4 (-68.59, 0.00, 19.97)
+Turret 3 (-54.00, 0.00, 2.92)
+Turret 2 (-35.78, 0.00, 1.17)
+Turret 1 (-17.06, 0.00, 1.93)
+
+Top Healer (-40.92, 0.00, 20.25)
+
+Backs 1 (-43.42, 0.00, 31.11)
+Backs 2 (-45, 0.00, 32.23)
+
+Crystal Miner (-35.19, 0.00, 36.03)
+
+Mid Healer (-21.95, 0.00, 24.00)
+
+Fronts 1 (-14.40, 0.00, 37.67)
+Fronts 2 (-12.51, 0.00, 37.67)
+
+==RIGHT SIDE 右边==
+
+Base Shop (88.57, 1.80, 0.51)
+
+Crystal (76.12, 0.10, 19.90)
+
+Turret 5 (75.48, 0.00, 11.96)
+Turret 4 (68.59, 0.00, 19.97)
+Turret 3 (54.00, 0.00, 2.92)
+Turret 2 (35.78, 0.00, 1.17)
+Turret 1 (17.06, 0.00, 1.93)
+
+Top Healer (40.59, 0.00, 20.75)
+
+Backs 1 (43.49, 0.00, 31.28)
+Backs 2 (45.60, 0.00, 32.40)
+
+Crystal Miner (35.20, -0.00, 35.87)
+
+Mid Healer (22.50, 0.00, 23.50)
+
+Fronts 1 (14.85, 0.00, 38.12)
+Fronts 2 (12.89. 0.00, 36.74)
+
+==Miscellaneous 其他==
+Gold Miner / Kraken (0.00, 0.00. 23.60)
+Elder Treant / Jungle Shop (0.20, 0.00, 42,00)
+Compass Center (.092, 0.01, 3.33)
+Map Center (0.00, 0.00, 0.00)
+
+### 比赛准备阶段时间
+以下事件只在比赛准备阶段出现，比如选择英雄。
+
+#### 英雄禁选
+当英雄被禁选时发生，此事件只在征召模式中出现。
+
+	{
+	    "time": "2017-06-17T18:19:52+0000",
+	    "type": "HeroBan",
+	    "payload": {
+	        "Hero": "*Grumpjaw*",
+	        "Team": "1"
+	    }
+	}
+
+#### 英雄选择
+当玩家选择英雄时发生，```Handle```是玩家在游戏中的名字。
+
+	{
+	    "time": "2017-06-26T04:58:29+0000",
+	    "type": "HeroSelect",
+	    "payload": {
+	        "Hero": "*Blackfeather*",
+	        "Team": "2",
+	        "Player": "cc4069da-982b-11e4-9bf4-06eb725f8a76",
+	        "Handle": "CrownNorth"
+	    }
+	}
+
+#### 选择英雄皮肤
+玩家选择皮肤是发生，此事件通常在选择英雄后发生，或同时发生，并且可能出现多次如果进行皮肤更换。所有英雄皮肤列表可参考[resources folder](https://github.com/madglory/gamelocker-vainglory/tree/master/resources).
+
+	{
+	    "time": "2017-06-26T04:58:29+0000",
+	    "type": "HeroSkinSelect",
+	    "payload": {
+	        "Hero": "*Blackfeather*",
+	        "Skin": "Blackfeather_Skin_Dynasty_T1"
+	    }
+	}
+
+#### 英雄切换
+玩家相互兑换英雄时发生，此事件只在征召模式中发生。Player是玩家的唯一ID。
+
+	{
+		"time": "2017-06-13T06:41:38+0000",
+		"type": "HeroSwap",
+		"payload": [
+			{
+				"Hero": "*Glaive*",
+				"Team": "2",
+				"Player": "85d05694-2ab2-11e5-8d94-06f4ee369f53"
+			},
+			{
+				"Hero": "*Catherine*",
+				"Team": "2",
+				"Player": "292e51d6-9640-11e4-a597-06eb725f8a76"
+			}
+		]
+	}
+
+### 比赛事件
+以下事件只在比赛进行时发生。
+
 ### PlayerFirstSpawn
 
 游戏开始，玩家出现时记录。
@@ -283,7 +418,7 @@ curl "https://gl-prod-us-east-1.s3.amazonaws.com/assets/semc-vainglory/na/2017/0
 
 ### EarnXP
 
-当玩家以任意手段获取经验时被记录，经验的来源可能是杂兵，金矿或英雄。
+当玩家以任意手段获取经验时被记录，经验的来源可能是杂兵，金矿或英雄。高级提示：此事件不会被XP trickle（比赛中每秒的经验增长值）记录。
 
 ```json
   {
@@ -369,6 +504,28 @@ curl "https://gl-prod-us-east-1.s3.amazonaws.com/assets/semc-vainglory/na/2017/0
     }
   }
 ```
+
+#### Executed
+当玩家被非玩家伤害所杀死时，如被克拉肯或小兵杀死时.
+
+	{
+	    "time": "2017-06-13T06:43:40+0000",
+	    "type": "Executed",
+	    "payload": {
+	        "Team": "Left",
+	        "Actor": "*JungleMinion_TreeEnt*",
+	        "Killed": "*Samuel*",
+	        "KilledTeam": "Left",
+	        "Gold": "0",
+	        "IsHero": 0,
+	        "TargetIsHero": 1,
+	        "Position": [
+	            -41.82,
+	            0.01,
+	            27.02
+	        ]
+	    }
+	}
 
 ### GoldFromTowerKill
 
