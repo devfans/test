@@ -233,7 +233,7 @@ ID | The ID of the match to retrieve
 
 我们特意隐藏了一些比赛数据。具体来说，一场比赛必须满足以下所有要求，才能被认为是一场有效比赛.
   1.  游戏模式必须为一下一种:
-    * 排位赛
+    * 排位赛
     * 匹配赛
     * 好友对战
     * private_party_draft_match
@@ -241,7 +241,7 @@ ID | The ID of the match to retrieve
     * private_party_blitz_match
     * casual_aral
     * blitz_pvp_ranked
-  1. 不能以以下状态结束:
+  1. 不能以以下状态结束:
     * 结束练习
     * 玩家数目不足
-  1. 由于专业玩家练习需求，我们会去除无排位玩家切游戏模式为好友对战的比赛。
+  1. 由于专业玩家练习需求，我们会去除无排位玩家切游戏模式为好友对战的比赛。
