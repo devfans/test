@@ -56,7 +56,7 @@ Primary data will be either:
 
 ## Rate Limits
 
->比率限制头部定义如下：
+>请求频率限制头部定义如下：
 
 ~~~
 X-RateLimit-Limit - 每天/每分钟请求数量的限制
@@ -65,7 +65,7 @@ X-RateLimit-Reset - 以UTC epoch纳秒为单位，比率限制的窗口时间剩
 * 限制数额以 60（秒）为速率增长。也就是说
 ~~~
 
-如果您请求的太多太快，我们会返回给您一个 `429` 错误代码（服务器不可用）。
+如果您请求的过于频繁，我们会返回给您一个 `429` 错误代码（服务器不可用）。
 
 <aside class="notice">
 非商业用途免费，每分钟请求数量上限为10。如需增加频率限制，请联系api@superevilmegacorp.com。
