@@ -4,6 +4,9 @@
 - key: ApiKey
 - nonce: Any integer larger than last request.
 - sig: Signature generated with ApiKey, nonce and ApiSecret
+- pageSize(optional): Page Size, default as 10, max 500.
+- page(optional): Page index, default as 1
+
 ##### Signature generation sample
 ```
 import hashlib, hmac
@@ -129,6 +132,8 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 - key: 即ApiKey
 - nonce: 任意整数，数值需比上一次请求的大
 - sig: 使用ApiKey, ApiSecret和 nonce生成的sha256数字签名
+- pageSize(可选): 分页大小, 默认为10, 最大500
+- page(可选): 页，默认第一页
 ##### 签名生成示例(Python）
 ```
 import hashlib, hmac
