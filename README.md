@@ -6,6 +6,7 @@
 - sig: Signature generated with ApiKey, nonce and ApiSecret
 ##### Signature generation sample
 ```
+import hashlib, hmac
 message = api_key + nonce
 signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdigest()
 ```
@@ -120,7 +121,7 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 }
 ```
 
-# =====================Chinese Version=====================
+# =====Chinese Version=====
 
 # API 文档
 
@@ -128,12 +129,13 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 - key: 即ApiKey
 - nonce: 任意整数，数值需比上一次请求的大
 - sig: 使用ApiKey, ApiSecret和 nonce生成的sha256数字签名
-##### Signature generation sample
+##### 签名生成示例(Python）
 ```
+import hashlib, hmac
 message = api_key + nonce
 signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdigest()
 ```
-#### Notes
+#### API使用说明
 - 每个ApiKey一分钟内最多能发送60个请求。
 - 部分请求到的数据会有缓存，缓存一般2到3分钟后过期。
 ## API 接口
