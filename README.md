@@ -18,7 +18,7 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 - Some results will be cached and cache may survive for 2 to 3 minutes depending on which kind of data you are requesting.
 ## API Endpoints
 ### Get pool stats
-```https://api.dcexploration.com/api/v1/poolStats```
+```https://api.dcexploration.com/v1/poolStats```
 ##### Result:
 ```
 {
@@ -35,7 +35,7 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 }
 ```
 ### Get account info
-```https://api.dcexploration.com/api/v1/account```
+```https://api.dcexploration.com/v1/account```
 ##### Result:
 ```
 {
@@ -53,7 +53,7 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 }
 ```
 ### Get miner hashrate
-```https://api.dcexploration.com/api/v1/hashrate```
+```https://api.dcexploration.com/v1/hashrate```
 ##### Result:
 ```
 {
@@ -70,7 +70,7 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 }
 ```
 ### Get workers status
-```https://api.dcexploration.com/api/v1/workers```
+```https://api.dcexploration.com/v1/workers```
 ##### Result:
 ```
 {
@@ -97,7 +97,7 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 }
 ```
 ### Get payment history
-```https://api.dcexploration.com/api/v1/payments```
+```https://api.dcexploration.com/v1/payments```
 ##### Result:
 ```
 {
@@ -145,7 +145,7 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 - 部分请求到的数据会有缓存，缓存一般2到3分钟后过期。
 ## API 接口
 ### 获取矿池数据
-```https://api.dcexploration.com/api/v1/poolStats```
+```https://api.dcexploration.com/v1/poolStats```
 ##### 返回数据:
 ```
 {
@@ -162,7 +162,7 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 }
 ```
 ### 获取账户信息
-```https://api.dcexploration.com/api/v1/account```
+```https://api.dcexploration.com/v1/account```
 ##### 返回数据:
 ```
 {
@@ -180,7 +180,7 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 }
 ```
 ### 获取矿工算力
-```https://api.dcexploration.com/api/v1/hashrate```
+```https://api.dcexploration.com/v1/hashrate```
 ##### 返回数据:
 ```
 {
@@ -197,7 +197,7 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 }
 ```
 ### 获取矿机状态
-```https://api.dcexploration.com/api/v1/workers```
+```https://api.dcexploration.com/v1/workers```
 ##### 返回数据:
 ```
 {
@@ -224,7 +224,7 @@ signature = hmac.new(API_SECRET, msg=message, digestmod=hashlib.sha256).hexdiges
 }
 ```
 ### 获取收益记录
-```https://api.dcexploration.com/api/v1/payments```
+```https://api.dcexploration.com/v1/payments```
 ##### 返回数据:
 ```
 {
